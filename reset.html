@@ -70,8 +70,19 @@
     <script>
       $( document ).ready(function() {
 
+        function alertDismissed() {
+          // do something
+        }
+
+
+
         $("#reset").mousedown(function (){
-          // navigator.notification.alert('You are the winner!');
+          navigator.notification.alert(
+            'You are the winner!',  // message
+            alertDismissed,         // callback
+            'Game Over',            // title
+            'Done'                  // buttonName
+          );
           navigator.notification.beep(3);
           navigator.notification.vibrate(1000);
           localStorage.initialized = false;
