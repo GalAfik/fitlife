@@ -104,7 +104,7 @@
             <!-- submit -->
             <div class="form-group">
               <div class="">
-                <button id="singlebutton" name="singlebutton" class="btn btn-default">Add Workout</button>
+                <button id="add" name="add" class="btn btn-default">Add Workout</button>
               </div>
             </div>
 
@@ -134,12 +134,9 @@
 
         $("#scheduled_times").innerHTML("<div>"+localStorage.schedule[0].Day+"</div>");
 
-        $("#submit").click(function setInfo(){
-          localStorage.myname = $("#user_name").val();
-          alert(localStorage.myname);
-        });
-        $("#check").click(function displayInfo(){
-          alert(localStorage.myname);
+        $("#add").mousedown(function setInfo(){
+          var startDate = new Date(2014,5,20,1,30,0,0,0);
+          window.plugins.calendar.createEvent("Workout",null,null,startDate,null,null,null);
         });
       });
     </script>
