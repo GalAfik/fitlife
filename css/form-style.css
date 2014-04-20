@@ -8,6 +8,7 @@ body{
   background-repeat:no-repeat;
   background-attachment:fixed;
   font-family: 'Open Sans', sans-serif;
+  margin-top: 10%;
 }
 .auth h1{
   color:#303030!important;
