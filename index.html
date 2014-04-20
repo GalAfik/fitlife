@@ -13,7 +13,13 @@
   </head>
   <body>
 
-  <nav class="navbar navbar-default navbar-xs" role="navigation">
+    <script>
+    if(localStorage.initialized == "false"){
+          window.location.href = './init.html';
+        }
+    </script>
+
+  <nav class="navbar navbar-default navbar-xs navbar-fixed-top" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -60,6 +66,8 @@
       <div class="clearfix"></div>
     </div>
 
+    <br>
+
     <div class="container auth">
       <div id="big-form" class="well auth-box">
         <h3>Iron Man</h3>
@@ -92,9 +100,6 @@
 
     <script>
       $( document ).ready(function() {
-        if(localStorage.initialized == false){
-          window.location.href = './init.html';
-        }
 
         var photo = localStorage.photo;
         $("#photo").attr("src", photo);
