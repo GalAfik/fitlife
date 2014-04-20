@@ -27,29 +27,29 @@
             <div class="form-group">
               <label class=" control-label" for="selectbasic">Name</label>
               <div class="">
-                <input id="textinput" name="textinput" placeholder="Name" class="form-control input-md" type="text">
+                <input id="name" placeholder="Name" class="form-control input-md" type="text">
               </div>
             </div>
 
             <div class="form-group">
               <label class=" control-label" for="selectbasic">Height</label>
               <div class="">
-                <input id="textinput" name="textinput" placeholder="Feet" class="form-control input-md" type="text">
-                <input id="textinput" name="textinput" placeholder="Inches" class="form-control input-md" type="text">
+                <input id="feet" placeholder="Feet" class="form-control input-md" type="text">
+                <input id="inches" placeholder="Inches" class="form-control input-md" type="text">
               </div>
             </div>
 
             <div class="form-group">
               <label class=" control-label" for="selectbasic">Weight</label>
               <div class="">
-                <input id="textinput" name="textinput" placeholder="Weight" class="form-control input-md" type="text">
+                <input id="weight" placeholder="Weight" class="form-control input-md" type="text"> lbs.
               </div>
             </div>
 
             <div class="form-group">
               <label class=" control-label" for="selectbasic">Age</label>
               <div class="">
-                <input id="textinput" name="textinput" placeholder="Age" class="form-control input-md" type="text">
+                <input id="age" placeholder="Age" class="form-control input-md" type="text">
               </div>
             </div>
 
@@ -57,9 +57,9 @@
             <div class="form-group">
               <label class=" control-label" for="selectbasic">Sex</label>
               <div class="">
-                <select id="selectbasic" name="selectbasic" class="form-control">
-                  <option value="1">Male</option>
-                  <option value="2">Female</option>
+                <select id="sex" class="form-control">
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
                 </select>
               </div>
             </div>
@@ -68,16 +68,11 @@
             <div class="form-group">
               <label class=" control-label" for="filebutton">Profile Picture</label>
               <div class="">
-                <input id="upload" name="filebutton" class="input-file" type="file">
+                <input id="upload" class="input-file" type="file">
               </div>
             </div>
 
-            <!-- submit -->
-            <div class="form-group">
-              <div class="">
-                <button id="singlebutton" name="singlebutton" class="btn btn-default">Continue</button>
-              </div>
-            </div>
+            <button id="submit" class="btn btn-default">Continue</button>
 
 
           </fieldset>
@@ -99,6 +94,34 @@
 
     <script>
       $( document ).ready(function() {
+        var challangelist = [
+          { "Name":"Iron Man" , "Description":"Do 50 pushups." , "points":"50" , "done":"true" },
+          { "Name":"Armstrong" , "Description":"Bike for 20 miles." , "points":"80" , "done":"true" },
+          { "Name":"Popular" , "Description":"Post a message to facebook or twitter." , "points":"40" , "done":"true" },
+          { "Name":"A single step..." , "Description":"Begin your training journey." , "points":"50" , "done":"true" },
+          { "Name":"Hydrator" , "Description":"Slay 5 bottles of water... by drinking them!" , "points":"40" , "done":"false" },
+          { "Name":"Eye of the tiger" , "Description":"Do 100 crunches." , "points":"120" , "done":"false" },
+          { "Name":"I'm a big kid now!" , "Description":"Do 20 pull-ups." , "points":"50" , "done":"false" }
+        ];
+
+        var schedulelist = [
+          { "Day":"1" , "Hour":"4" , "Minute":"15" , "AMPM":"2" },
+          { "Day":"1" , "Hour":"12" , "Minute":"45" , "AMPM":"1" }
+        ];
+
+        $("#submit").mousedown(function(){
+          localStorage.user_name = $("#name").val();
+          localStorage.user_weight = $("#weight").val();
+          localStorage.user_feet = $("#feet").val();
+          localStorage.user_inches = $("#inches").val();
+          localStorage.user_age = $("#age").val();
+          localStorage.user_sex = $("#sex").val();
+          localStorage.points = 0;
+          localStorage.challanges = challangelist;
+          localStorage.schedule = schedulelist;
+          window.location.href = './init2.html';
+        });
+
 
         Camera.sourceType = Camera.PictureSourceType.PHOTOLIBRARY
 
@@ -108,8 +131,7 @@
           navigator.camera.getPicture(onSuccess(), onFail(), { quality: 50 }); 
 
           function onSuccess(imageData) {
-              localStrorage.photo = "data:image/jpeg;base64," + imageData;
-              alert("success");
+              localStorage.photo = "data:image/jpeg;base64," + imageData;
           }
 
           function onFail(message) {
@@ -118,9 +140,6 @@
 
         });
 
-        $("#submit").click(function (){
-
-        });
       });
     </script>
   </body>

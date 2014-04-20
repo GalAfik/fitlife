@@ -71,9 +71,9 @@
 
     <script>
       $( document ).ready(function() {
-        if(localStorage.initialized == false){
-          window.location.href = "init.html";
-        }
+      if(localStorage.initialized == false){
+        window.location.href = "init.html";
+      }
 
 
         setInterval(function(){
@@ -81,7 +81,7 @@
           var hour = date.getHours();
           var min = date.getMinutes();
           var seconds = date.getSeconds();
-          $("#time_left").text( (24 - hour) + " h " + (60 - min) + " m " + (60 - seconds) + " s ");
+          $("#time_left").text( (23 - hour) + " h " + (59 - min) + " m " + (59 - seconds) + " s ");
         },100);
       });
     </script>

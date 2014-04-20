@@ -88,7 +88,7 @@
             <!-- submit -->
             <div class="form-group">
               <div class="">
-                <button id="singlebutton" name="singlebutton" class="btn btn-default">Continue</button>
+                <button id="submit" class="btn btn-default">Continue</button>
               </div>
             </div>
 
@@ -112,6 +112,10 @@
 
     <script>
       $( document ).ready(function() {
+        $("#submit").mousedown(function (){
+          localStorage.initialized = true;
+          window.location.href = './challanges.html';
+        });
 
         Camera.sourceType = Camera.PictureSourceType.PHOTOLIBRARY
 
@@ -131,9 +135,6 @@
 
         });
 
-        $("#submit").click(function (){
-
-        });
       });
     </script>
   </body>

@@ -70,7 +70,10 @@
     <script>
       $( document ).ready(function() {
 
-        $("#reset").click(function (){
+        $("#reset").mousedown(function (){
+          // navigator.notification.alert('You are the winner!');
+          navigator.notification.beep(3);
+          navigator.notification.vibrate(1000);
           localStorage.initialized = false;
           window.location.href = "init.html";
         });
