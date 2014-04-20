@@ -122,6 +122,19 @@
           window.location.href = './init2.html';
         });
 
+        $("#submit").click(function(){
+          localStorage.user_name = $("#name").val();
+          localStorage.user_weight = $("#weight").val();
+          localStorage.user_feet = $("#feet").val();
+          localStorage.user_inches = $("#inches").val();
+          localStorage.user_age = $("#age").val();
+          localStorage.user_sex = $("#sex").val();
+          localStorage.points = 0;
+          localStorage.challanges = challangelist;
+          localStorage.schedule = schedulelist;
+          window.location.href = './init2.html';
+        });
+
 
         Camera.sourceType = Camera.PictureSourceType.PHOTOLIBRARY
 
