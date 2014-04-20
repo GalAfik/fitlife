@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FitLife</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/init-style.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <div class="container auth">
+      <div id="big-form" class="well auth-box">
+        <p>We'll set up your first routine, how exciting! Don't overexert yourself at first; just two workouts should be fine to get you started. Remember, we want you to stick to this schedule!</p>
+        <form>
+          <fieldset>
+
+
+            <!-- Select Basic -->
+            <div class="form-group">
+              <label class=" control-label" for="selectbasic">Day</label>
+              <div class="">
+                <select id="selectbasic" name="selectbasic" class="form-control">
+                  <option value="1">Sunday</option>
+                  <option value="2">Monday</option>
+                  <option value="3">Tuesday</option>
+                  <option value="4">Wednesday</option>
+                  <option value="5">Thursday</option>
+                  <option value="6">Friday</option>
+                  <option value="7">Saturday</option>
+                </select>
+                <div class="dropdown">
+                  <button class="btn dropdown-toggle sr-only" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                    Dropdown
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+                  </ul>
+                </div>
+
+                <select id="selecttime" name="selecttime" class="form-control">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                </select>
+                :
+                <select id="parttime" name="parttime" class="form-control">
+                  <option value="1">00</option>
+                  <option value="2">15</option>
+                  <option value="3">30</option>
+                  <option value="4">45</option>
+                </select>
+                <select id="ampm" name="ampm" class="form-control">
+                  <option value="1">AM</option>
+                  <option value="2">PM</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- submit -->
+            <div class="form-group">
+              <div class="">
+                <button id="singlebutton" name="singlebutton" class="btn btn-default">Add Workout</button>
+              </div>
+            </div>
+
+            <hr>
+
+
+
+
+
+
+            <!-- submit -->
+            <div class="form-group">
+              <div class="">
+                <button id="singlebutton" name="singlebutton" class="btn btn-default">Continue</button>
+              </div>
+            </div>
+
+
+          </fieldset>
+        </form>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <script src="lib/jquery-1.8.2.min.js"></script>
+    <script src="js/storage/memory-store.js"></script>
+    <script src="js/main.js"></script>
+
+    <script>
+      $( document ).ready(function() {
+
+        Camera.sourceType = Camera.PictureSourceType.PHOTOLIBRARY
+
+        $("#upload").click(function (){
+          Camera.sourceType = Camera.PictureSourceType.PHOTOLIBRARY;
+
+          navigator.camera.getPicture(onSuccess(), onFail(), { quality: 50 }); 
+
+          function onSuccess(imageData) {
+              localStrorage.photo = "data:image/jpeg;base64," + imageData;
+              alert("success");
+          }
+
+          function onFail(message) {
+              alert('Failed because: ' + message);
+          }
+
+        });
+
+        $("#submit").click(function (){
+
+        });
+      });
+    </script>
+  </body>
+</html>

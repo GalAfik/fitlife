@@ -30,7 +30,7 @@
       <ul class="nav navbar-nav">
         <li class="active"><a href="index.html"><i class="glyphicon glyphicon-user"></i> Profile</a></li>
         <li><a href="challanges.html"><i class="glyphicon glyphicon-list-alt"></i> Challanges</a></li>
-        <li><a href="settings.html"><i class="glyphicon glyphicon-cog"></i> Settings</a></li>
+        <li><a href="schedule.html"><i class="glyphicon glyphicon-cog"></i> Settings</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </nav>
@@ -59,6 +59,25 @@
       </div>
       <div class="clearfix"></div>
     </div>
+
+    <div class="container auth">
+      <div id="big-form" class="well auth-box">
+        <h3>Iron Man</h3>
+        <p>Do 50 pushups today.</p>
+        <hr>
+        <h3>Armstrong</h3>
+        <p>Bike for 20 Miles.</p>
+        <hr>
+        <h3>Socializer</h3>
+        <p>We posted on Facebook for you!</p>
+        <hr>
+        <h3>A single step...</h3>
+        <p>Begin your training journey.</p>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+
+    <br>
 
 
 
@@ -94,7 +113,12 @@
         $("#sex").text(sex);
 
         var points = localStorage.points;
-        var level = points/100;
+        if(points < 100){
+          var level = 0;
+        }
+        else{  
+          var level = points/100;
+        }
         $("#level").text(level);
       });
     </script>

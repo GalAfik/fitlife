@@ -13,6 +13,26 @@
   </head>
   <body>
 
+    <div id="fb-root"></div>
+      <script>
+        window.fbAsyncInit = function() {
+          FB.init({
+            appId      : '609835135774414',
+            status     : true,
+            xfbml      : true
+          });
+        };
+
+        (function(d, s, id){
+           var js, fjs = d.getElementsByTagName(s)[0];
+           if (d.getElementById(id)) {return;}
+           js = d.createElement(s); js.id = id;
+           js.src = "//connect.facebook.net/en_US/all.js";
+           fjs.parentNode.insertBefore(js, fjs);
+         }(document, 'script', 'facebook-jssdk'));
+      </script>
+
+
   <nav class="navbar navbar-default navbar-xs" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -28,9 +48,9 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="profile.html"><i class="glyphicon glyphicon-user"></i> Profile</a></li>
+        <li><a href="index.html"><i class="glyphicon glyphicon-user"></i> Profile</a></li>
         <li><a href="challanges.html"><i class="glyphicon glyphicon-list-alt"></i> Challanges</a></li>
-        <li class="active"><a href="settings.html"><i class="glyphicon glyphicon-cog"></i> Settings</a></li>
+        <li class="active"><a href="schedule.html"><i class="glyphicon glyphicon-cog"></i> Settings</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
     <hr style="margin:0 0 0 0;">
@@ -72,23 +92,20 @@
       $( document ).ready(function() {
 
         $("#facebook").click(function (){
-          alert("facebook");
+          FB.login(function(response) {
+              if (response.authResponse) {
+                FB.api('/me', function(response) {
+                    localStorage.user_name = response.name;
+                    alert(localStorage.user_name);
+                });
+              } else {
+                  // The person cancelled the login dialog
+              }
+          });
         });
         $("#twitter").click(function (){
           alert("twitter");
         });
-
-        appId = 609835135774414; // this is your facebook app id
-
-        window.plugins.facebook.authorize(appId ,function(res){
-            alert(res.name); // the authorized users name
-
-            window.plugins.facebook.request("me/likes" ,function(res){
-                alert(res.data[0].name); // the name of the first 'liked' item
-            });
-
-        });
-
         
       });
     </script>
